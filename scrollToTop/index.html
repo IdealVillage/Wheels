@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            text-decoration:none;
+        }
+        .container{
+            height: 4000px;
+        }
+        #ToTop{
+            width: 0px;
+            height: 0px;
+            border:100px solid;
+            border-width: 10px 30px 70px 30px;
+            border-color: transparent transparent lightblue transparent;
+            cursor: pointer;
+            position: fixed;
+            bottom: 20px;
+            right: 10px;
+        }
+        #ToTop.backing{
+            border-color: transparent transparent lightcoral transparent;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="ToTop"></div>
+    </div>
+    <script src="scrollToTop.js"></script>
+    <script>
+        var toTop=new ScrollToTop('#ToTop');
+    </script>
+</body>
+</html>
