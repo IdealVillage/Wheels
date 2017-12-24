@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ProgressIndicator</title>
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+        }
+        body{
+            height: 20000px;
+        }
+        div{
+            height: inherit;
+            background-color: lightblue;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script src="index.js"></script>
+    <script>
+        var progressBar=new ProgressIndicator();
+        progressBar.once("end",function() {
+            alert("恭喜你已经阅读完毕");
+        })
+    </script>
+</body>
+</html>

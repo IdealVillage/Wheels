@@ -41,7 +41,7 @@
         fBound.prototype=new fNop();
         return fBound;
     };
-
+    
     var util={
       extend:function(target) {
           for(var i=1,len=arguments.length;i<len;i++){
@@ -53,6 +53,7 @@
           }
           return target;
       },
+      //兼容的坑
       getStyle:function(elem,prop) {
           return elem.currentStyle ? elem.currentStyle[prop] : document.defaultView.getComputedStyle(elem)[prop];
       },
@@ -93,7 +94,7 @@
       fadeOut:function(elem,speed) {
           var opacity=100;
           util.setOpacity(elem,100);
-          var timer;
+          var tiemr;
 
           function step() {
               util.setOpacity(elem,opacity-=speed);
@@ -183,20 +184,20 @@
 
     proto.bindScrollEvent=function() {
         var self=this;
-        util.addEvent(window,"scroll",function() {
-            if (util.getScrollOffsets().y>self.options.showWhen) {
-                if (self.status=='hide') {
+        util.addEvent(self.elem,"scroll",function() {
+            if (self.getScrollOffsets().y>self.options.showWhen) {
+                if (self.status=="hide") {
                     util.fadeIn(self.elem,self.options.fadeSpeed);
-                    self.status='show';
-                }
-            }else{
-                if (self.status=='show') {
-                    util.fadeOut(self.elem,self.options.fadeSpeed);
-                    self.status='hide';
-                    util.removeClass(self.elem,'backing');
+                    self.status="show";
+                }else{
+                    if (self.status=="show") {
+                        util.fadeOut(self.elem,self.options.fadeSpeed);
+                        self.status="hide";
+                        util.removeClass(self.elem,"backing");
+                    }
                 }
             }
-        });    
+        });
     };
 
     proto.handleBack=function() {
@@ -228,3 +229,4 @@
         root.ScrollToTop = ScrollToTop;
     }
 })();
+
